@@ -27,3 +27,6 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+
+### ANGULAR PROJECT ###
+/node_modules
