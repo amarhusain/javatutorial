@@ -1,2 +1,136 @@
-<p>signup works!</p>
-<h1>Hello</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-8 col-lg-6">
+      <h3>Sign Up</h3>
+      <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+        <div class="mb-3">
+          <label for="fname" class="form-label">First Name </label>
+          <input
+            type="text"
+            class="form-control"
+            id="fname"
+            formControlName="firstname"
+            placeholder="Amar"
+            required
+          />
+          <div
+            *ngIf="
+              f.firstname.invalid && (f.firstname.dirty || f.firstname.touched)
+            "
+          >
+            <span style="color: red" *ngIf="f.firstname.errors?.required"
+              >name is required</span
+            >
+            <span style="color: red" *ngIf="f.firstname.errors?.minlength"
+              >name should be min 3 chars</span
+            >
+            <span style="color: red" *ngIf="f.firstname.errors?.maxlength"
+              >name should be max 15 chars</span
+            >
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="lname" class="form-label">Last Name </label>
+          <input
+            type="text"
+            class="form-control"
+            id="lname"
+            formControlName="lastname"
+            placeholder="Last name"
+          />
+          <div
+            *ngIf="
+              f.lastname.invalid && (f.lastname.dirty || f.lastname.touched)
+            "
+          >
+            <span style="color: red" *ngIf="f.lastname.errors?.required"
+              >Last name is required</span
+            >
+            <span style="color: red" *ngIf="f.lastname.errors?.minlength"
+              >Last name should be min 3 chars</span
+            >
+            <span style="color: red" *ngIf="f.lastname.errors?.maxlength"
+              >Last name should be max 15 chars</span
+            >
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="dob" class="form-label">DOB </label>
+          <input
+            type="date"
+            class="form-control"
+            id="dob"
+            formControlName="dob"
+          />
+          <span
+            *ngIf="f.dob.errors?.pattern"
+            class="helper-text red-text text-darken-1"
+            style="color: red"
+            >DOB is required.</span
+          >
+        </div>
+
+        <div class="mb-3">
+          <label for="gender" class="form-label">Gender </label>
+          <select id="gender" formControlName="gender" class="form-control">
+            <option>Select...</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="mobile" class="form-label">Mobile </label>
+          <input
+            type="text"
+            class="form-control"
+            id="mobile"
+            formControlName="mobile"
+            placeholder="Mobile number"
+            minlength="10"
+            maxlength="10"
+            required
+          />
+          <span
+            *ngIf="f.mobile.errors?.pattern"
+            class="helper-text red-text text-darken-1"
+            style="color: red"
+            >Mobile number must be 10 digits.</span
+          >
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            placeholder="example@gmail.com"
+            required
+          />
+          <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
+            <span style="color: red" *ngIf="f.email.errors?.required"
+              >Email is mandatory</span
+            >
+            <span style="color: red" *ngIf="f.email.errors?.pattern"
+              >Please enter a correct email. Ex :- ammar@gmail.com</span
+            >
+          </div>
+        </div>
+        <div class="float-end">
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="!signUpForm.valid"
+          >
+            Signup
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
