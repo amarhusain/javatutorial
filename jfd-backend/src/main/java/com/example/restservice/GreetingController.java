@@ -1,5 +1,7 @@
 package com.example.restservice;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,7 @@ public class GreetingController {
 		  }
 	 
 	  @PostMapping(path="/user/add")
-		public User addNewUser (
+		public User addUser (
 				@RequestParam String fname, @RequestParam String lname, 
 				@RequestParam String email) {
 
@@ -39,5 +41,16 @@ public class GreetingController {
 			userRepository.save(user);
 			return user;
 		}
+	  
+	  @GetMapping("/users") 
+	  public List<User> users() {
+		  Iterable<User> users = userRepository.findAll();
+		  ArrayList<User> usersList = new ArrayList<User>();
+		  for (User user: users) {
+			  usersList.add(user);
+		  }
+		  
+		  return usersList; 
+	  }
 	
 }
