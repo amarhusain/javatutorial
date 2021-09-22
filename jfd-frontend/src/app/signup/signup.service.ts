@@ -9,8 +9,6 @@ import { Observable } from "rxjs";
     constructor(private httpClient: HttpClient) {}
   
     public registerNewUser(user: any): Observable<boolean> {
-      alert(JSON.stringify(user));
-      // const url = this._commonService.urlPrefix + 'user/registerNewUser';
-      return this.httpClient.post<boolean>('', user);
+      return this.httpClient.post<boolean>('api/user/add', user);
     }
   }

@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,16 +29,15 @@ public class GreetingController {
 		  }
 	 
 	  @PostMapping(path="/user/add")
-		public User addUser (
-				@RequestParam String fname, @RequestParam String lname, 
-				@RequestParam String email) {
+		public User addUser (@RequestBody User user) {
 
-			User user = new User();
-			user.setFname(fname);
-			user.setLname(lname);
-			user.setGender("Male");
-			user.setMobile("1111111111");
-			user.setEmail(email);
+			/*
+			 * User user = new User(); user.setFname(fname); user.setLname(lname);
+			 * user.setGender("Male"); user.setMobile("1111111111"); user.setEmail(email);
+			 */
+		    System.out.println("Fname -- " + user.getFname());
+		    System.out.println("Lname -- " + user.getLname());
+		    System.out.println("Mobile -- " + user.getMobile());
 			userRepository.save(user);
 			return user;
 		}

@@ -9,22 +9,22 @@
             type="text"
             class="form-control"
             id="fname"
-            formControlName="firstname"
+            formControlName="fname"
             placeholder="Amar"
             required
           />
           <div
             *ngIf="
-              f.firstname.invalid && (f.firstname.dirty || f.firstname.touched)
+              f.fname.invalid && (f.fname.dirty || f.fname.touched)
             "
           >
-            <span style="color: red" *ngIf="f.firstname.errors?.required"
+            <span style="color: red" *ngIf="f.fname.errors?.required"
               >name is required</span
             >
-            <span style="color: red" *ngIf="f.firstname.errors?.minlength"
+            <span style="color: red" *ngIf="f.fname.errors?.minlength"
               >name should be min 3 chars</span
             >
-            <span style="color: red" *ngIf="f.firstname.errors?.maxlength"
+            <span style="color: red" *ngIf="f.fname.errors?.maxlength"
               >name should be max 15 chars</span
             >
           </div>
@@ -36,21 +36,21 @@
             type="text"
             class="form-control"
             id="lname"
-            formControlName="lastname"
+            formControlName="lname"
             placeholder="Last name"
           />
           <div
             *ngIf="
-              f.lastname.invalid && (f.lastname.dirty || f.lastname.touched)
+              f.lname.invalid && (f.lname.dirty || f.lname.touched)
             "
           >
-            <span style="color: red" *ngIf="f.lastname.errors?.required"
+            <span style="color: red" *ngIf="f.lname.errors?.required"
               >Last name is required</span
             >
-            <span style="color: red" *ngIf="f.lastname.errors?.minlength"
+            <span style="color: red" *ngIf="f.lname.errors?.minlength"
               >Last name should be min 3 chars</span
             >
-            <span style="color: red" *ngIf="f.lastname.errors?.maxlength"
+            <span style="color: red" *ngIf="f.lname.errors?.maxlength"
               >Last name should be max 15 chars</span
             >
           </div>

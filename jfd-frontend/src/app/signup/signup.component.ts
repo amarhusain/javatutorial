@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
     private httpClient: HttpClient
   ) {
     this.signUpForm = this.fb.group({
-      firstname: [
+      fname: [
         '',
         [
           Validators.minLength(3),
@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
           Validators.maxLength(15),
         ],
       ],
-      lastname: [
+      lname: [
         '',
         [
           Validators.minLength(3),
@@ -48,23 +48,9 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    let params = new HttpParams();
-    params = params.append('fname', 'B');
-    params = params.append('lname', 'B');
-    params = params.append('email', 'B');
-
-
-    //localhost:8080/user/add?fname=Value1&lname=Value2&email=Value3
-    // Move below http call to service
-    this.httpClient.post<user>('api/user/add', '', {params: params}).subscribe( data => { 
-      console.log('DATA ', data);
-      this.whoami = 'first name :: ' + data.fname + ', last name :: ' + data.lname + ', Email :: ' + data.email;
-    });
-  }
+  ngOnInit(): void {}
 
   signUp() {
-    // console.log(this.signUpForm.value);
     this.registerService
       .registerNewUser(this.signUpForm.value)
       .subscribe((data) => {});
