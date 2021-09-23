@@ -6,18 +6,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entity.User;
-import com.example.repository.UserRepository;
+import com.example.service.UserServiceIF;
 
 @RestController
 public class SignupController {
-
+	
 	@Autowired
-	private UserRepository userRepository;
+	private UserServiceIF userService;
 	
 	@PostMapping(path="/user/add")
-	public User addUser (@RequestBody User user) {
-		userRepository.save(user);
-		return user;
+	public User addUser(@RequestBody User user) {
+		return userService.addUser(user);
 	}
 	
 }

@@ -12,6 +12,3 @@ public class RestServiceApplication {
 
 }
 
-//@Configuration
-//@ComponentScan(value="com.example.restservice")
-//@SpringWebAppliation
