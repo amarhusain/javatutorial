@@ -1,7 +1,6 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RegisterService } from '../register.service';
+import { SignupService } from '../service/signup.service';
 import { user } from './user.model';
 
 @Component({
@@ -15,11 +14,8 @@ export class SignupComponent implements OnInit {
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   whoami = '';
 
-  constructor(
-    private fb: FormBuilder,
-    private registerService: RegisterService,
-    private httpClient: HttpClient
-  ) {
+  constructor(private fb: FormBuilder,
+    private signupService: SignupService) {
     this.signUpForm = this.fb.group({
       fname: [
         '',
@@ -51,7 +47,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {}
 
   signUp() {
-    this.registerService
+    this.signupService
       .registerNewUser(this.signUpForm.value)
       .subscribe((data) => {});
   }
