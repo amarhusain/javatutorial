@@ -8,4 +8,6 @@ public interface UserServiceIF {
 	User addUser(User user);
 	List<User> users();
 	List<User> delete(User user);
+	
+	void deleteUser(Long id);
 }

@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entity.User;
@@ -22,10 +24,16 @@ public class HomeController {
 		return this.userService.users();
 	}
 	
-	@GetMapping("/user/delete")
+	@PostMapping("/user/delete")
 	public List<User> delete(@RequestBody User user) {
 		
 		return this.userService.delete(user);
+	}
+	
+	@GetMapping("/user/deletebyid")
+	public boolean deleteUserById(@RequestParam Long id) {
+		userService.deleteUser(id);
+		return true;
 	}
 	
 }

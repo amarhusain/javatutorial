@@ -87,7 +87,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <!-- <div class="row">
     <div class="col">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;">
         <ng-container matColumnDef="id">
@@ -120,7 +120,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </div>
-  </div>
+  </div> -->
 
   <div class="row">
     <div class="col">
@@ -140,16 +140,25 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users;">
+          <tr *ngFor="let user of users">
             <td>{{user.id}}</td>
             <td>{{user.fname}}</td>
             <td>{{user.lname}}</td>
             <td>{{user.mobile}}</td>
             <td>{{user.email}}</td>
             <td>{{user.gender}}</td>
-            <td><button class="btn btn-success" 
-                        (click)="deleteUser($event)">Delete</button></td>
+            <td>
+              <button class="btn btn-danger" 
+                        (click)="deleteUser(user)">Delete</button>
+
+              <button class="btn btn-warning ml-8" *ngIf="showUpdateBtn"
+                        (click)="editUser()">Edit</button>
+
+              <button class="btn btn-success ml-8" *ngIf="!showUpdateBtn"
+                        (click)="updateUser(user)">Update</button>
+            </td>
           </tr>  
+          
         </tbody>
       </table>
     </div>

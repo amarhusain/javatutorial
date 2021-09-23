@@ -44,6 +44,13 @@ public class UserServiceIMPL implements UserServiceIF {
 		}
 		return usersList;
 	}
+	
+	@Override
+	public void deleteUser(Long id) {
+		userRepository.deleteById(id);
+	}
+	
+	
 
 	
 }

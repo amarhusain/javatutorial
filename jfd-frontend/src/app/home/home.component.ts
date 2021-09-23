@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { user } from '../signup/user.model';
+import { User } from '../signup/user.model';
 import { HomeService } from './home.service';
 
 @Component({
@@ -10,10 +10,10 @@ import { HomeService } from './home.service';
 export class HomeComponent implements OnInit {
 
 
-  public users: user[] = [];
+  public users: User[] = [];
   displayedColumns: string[] = ['id', 'fname', 'lname', 'mobile', 'email', 'gender'];
-  dataSource: user[] = [];
-
+  dataSource: User[] = [];
+  showUpdateBtn = true;
 
   constructor(private homeService: HomeService) { }
 
@@ -28,8 +28,19 @@ export class HomeComponent implements OnInit {
   }
 
 
-  deleteUser($event: any) {
-    console.log('User ', ($event.target.parentElement.parentElement.children[0]));
+  deleteUser(user:User) {
+    this.homeService.deleteUser2(user).subscribe( response => {
+      if(response){
+        this.users = response;
+      }
+    })
+  }
+
+  editUser(){
+    this.showUpdateBtn = false;
+  }
+  updateUser(user: User){
+
   }
 
 }
