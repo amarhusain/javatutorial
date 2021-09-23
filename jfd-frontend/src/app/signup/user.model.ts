@@ -4,4 +4,5 @@ export interface user {
     gender: string;
     mobile: string;
     email: string;
+    dob: string;
 }

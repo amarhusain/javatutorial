@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,6 +21,7 @@ public class User {
 	private String gender;
 	private String mobile;
 	private String email;
+	private Date dob;
 	public Long getId() {
 		return id;
 	}
@@ -55,5 +58,12 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public Date getDob() {
+		return dob;
+	}
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+	
 
 }

@@ -10,7 +10,6 @@ import { user } from "../signup/user.model";
     constructor(private httpClient: HttpClient) {}
   
     public getUsers(): Observable<user[]> {
-      // const url = this._commonService.urlPrefix + 'user/registerNewUser';
       return this.httpClient.get<user[]>('api/users');
     }
   }
